@@ -1,0 +1,68 @@
+﻿@model IEnumerable<FlightSchedule>
+
+@{
+    ViewData["Title"] = "FlightSchedule";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-10">
+            <h1>Flight Schedule</h1>
+        </div>
+        <div class="col">
+            <a asp-action="Create" class="btn btn-lg btn-primary">+ Add Flight</a>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid">
+
+    @if (Model.Any())
+    {
+        <table class="table">
+            <tr>
+                <th>Flight Number</th>
+                <th>Flight Name</th>
+                <th>Type</th>
+                <th>From</th>
+                <th>Destination</th>
+                <th>Cost</th>
+                <th>Date</th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Flight.FlightNumber</td>
+                    <td>@item.Flight.FlightName</td>
+                    <td>@item.Flight.FlightType</td>
+                    <td>@item.FlightFrom</td>
+                    <td>@item.FlightTo</td>
+                    <td>@item.Cost</td>
+                    <td>@item.FlightDate</td>
+                    <td><a asp-action="Edit" asp-route-id="@item.FlightId" class="btn btn-primary">Edit</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@item.FlightId" class="btn btn-danger" onclick="return confirm('Do you want to Delete the Flight ?')">Delete</a> </td>
+
+                                       
+                </tr>
+                
+
+            }
+        </table>
+
+    }
+    else
+    {
+        <div class="alert alert-info ">
+            No Flights Were Found. Please Add a flight.
+        </div>
+
+    }
+
+
+
+</div>
+

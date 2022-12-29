@@ -1,0 +1,42 @@
+﻿@model FlightRegisterView
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <form method="post">
+                <div>
+                    <label asp-for="FlightName"></label>
+                    <input asp-for="FlightName" class="form-control" />
+                    <span asp-validation-for="FlightName" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="FlightType"></label>
+                    <select asp-for="FlightType" asp-items="@Html.GetEnumSelectList<FlightType>()" class="form-control">
+                        <option>Please select a FlightType</option>
+                    </select>
+                    <span asp-validation-for="FlightType" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="Discription"></label>
+                    <textarea asp-for="Discription" class="form-control"></textarea>
+                    <span asp-validation-for="Discription" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="TotalCapacity"></label>
+                    <input asp-for="TotalCapacity" class="form-control" />
+                    <span asp-validation-for="TotalCapacity" class="text-danger"></span>
+                </div>
+                <div class="d-grid mt-4">
+                    <button class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

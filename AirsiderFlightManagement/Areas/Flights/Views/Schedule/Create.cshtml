@@ -1,0 +1,57 @@
+﻿@model ScheduleViewModel
+@{
+    ViewData["Title"] = "Create Flight Schedule";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <form method="post">
+                <div>
+                    <label asp-for="Flight"></label>
+                    <select asp-for="Flight" asp-items="@(new SelectList(Model.Flights, "FlightId", "FlightName"))" class="form-control">
+                        <option>Please select a Flight</option>
+                    </select>
+                    <span asp-validation-for="Flights" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="FlightFrom"></label>
+                    <select asp-for="FlightFrom" asp-items="@Html.GetEnumSelectList<Location>()" class="form-control">
+                        <option>Please select a FlightType</option>
+                    </select>
+                    <span asp-validation-for="FlightFrom" class="text-danger"></span>
+                </div>
+                
+                <div>
+                    <label asp-for="FlightTo"></label>
+                    <select asp-for="FlightTo" asp-items="@Html.GetEnumSelectList<Location>()" class="form-control">
+                        <option>Please select a FlightType</option>
+                    </select>
+                    <span asp-validation-for="FlightTo" class="text-danger"></span>
+                </div>
+                
+                <div>
+                    <label asp-for="FlightDate"></label>
+                    <input asp-for="FlightDate" class="form-control" />
+                    <span asp-validation-for="FlightDate" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="Cost"></label>
+                    <input asp-for="Cost" class="form-control" />
+                    <span asp-validation-for="Cost" class="text-danger"></span>
+
+                </div>
+
+                
+                <div class="d-grid mt-4">
+                    <button class="btn btn-primary">Schedule Flight</button>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
